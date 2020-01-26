@@ -157,7 +157,8 @@ module->nCh = CODEC_QCHAN;
 
 module->Init( module );
 
-SetTimer( myhand, 666, module->latencyMs + module->delayMs, timer_call );
+// SetTimer( myhand, 666, module->latencyMs + module->delayMs, timer_call ); // grosse gaffe pourrait remplacer un autre timer !
+SetTimer( myhand, 0, module->latencyMs + module->delayMs, timer_call );	// pas de timer 0 --> safe
 printf("render timer started @ %ums\n", module->latencyMs + module->delayMs );
 
 // module->Render( module );
